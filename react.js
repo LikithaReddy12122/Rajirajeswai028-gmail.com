@@ -1,75 +1,69 @@
-import React,{useState} from 'react
-function RestaurantMenu(){
-  const[order,setOrder]=useState([]);
-  const menuItems=[
-    { id:1,name:'Dum Biryani',price:180},
-	{ id:2,name:'Special Biryani',price:200},
-	{ id:3,name:'Hyderabadi Biryani',price:260}
-    ];
-  const addToOrder=(item)=>setOrder([...order,item]);
-  const total=order.reduce((sum,item)=>sum+item.price,0);
-  return(
-    <div style={{
-     minHeight:'100vh',
-	 background:'linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
-  url(D:\23701a3097.jpeg)',
-     backgroundSize:'cover',
-	 color:'white',
-	 padding:'40px'
-	}}>
-	 <div style={{maxWidth:'600px',margin:'0 auto'}}>
-	 <h1 style={{fontFamily:'Georgia',borderBottom:'1px solid goldenrod'}}>Biryani House</h1>
-	 <div style={{display:'grid',gap:'20px',margin:'30px 0'}}>
-	 {menuItems.map(item=>(
-	 <div key={item.id}style={{
-	  display:'flex',
-	  justifyContent:'space-between',
-	  alignItems:'center',
-	  background:'rgba(255,255,255,0.1)',
-	  padding:'15px',
-	  borderRadius:'5px'
-	}}>
-	  <div>
-	    <h3 style={{margin:0}}>{item.name}</h3>
-		<p style={{color:'goldenrod',margin:'5px 0 0'}}${item.price}</p>
-	  </div>
-	  <button onClick={()=>addToOrder(item)}style={{
-	   background:'glodenrod',
-	   border:'none',
-	   padding:'8px 15px',
-	   borderRadius:'3px',
-	   cursor:'pointer'
-	  }}>+Add</button>
-	 </div>
-	 ))}
-	 </div>
-	 {order.length>0&&(
-	  <div style={{
-	    background:'rgba(0,0,0,0.7)',
-		padding:'20px',
-		borderRadius:'5px'
-	}}>
-	  <h2>Your Order</h2>
-	  {order.map((item,i)=>(
-	  <p key={i}style={{display:'flex',justifyContent:'space-between'}}>
-	  <span>{item.name}</span>
-	  <span>${item.price}</span>
-	  </p>
-	 ))}
-	 <p style={{
-	  borderTop:'1px solid goldenrod',
-	  paddingTop:'10px',
-	  fontWeight:'bold,,
-	  display:'flex',
-	  justifyContent:'space-between'
-	  }}>
-	   <span>Total:</span>
-	   <span>${total}</span>
-	   </p>
-	  </div>
-	  )}
-	  </div>
-	  </div>
-	  );
-	  }
-	  export default RestaurantMenu;
+import React from 'react';
+
+class ColorfulCounter extends React.Component {
+  state = { count: 0 };
+
+  increment = () => this.setState({ count: this.state.count + 1 });
+  decrement = () => this.setState({ count: this.state.count - 1 });
+  reset = () => this.setState({ count: 0 });
+
+  render() {
+    return (
+      <div style={{ textAlign: 'center', marginTop: '50px' }}>
+        <h1 style={{ color: '#333' }}>Count: {this.state.count}</h1>
+        <button 
+          onClick={this.increment}
+          style={styles.incrementButton}
+        >
+          +
+        </button>
+        <button 
+          onClick={this.decrement}
+          style={styles.decrementButton}
+        >
+          -
+        </button>
+        <button 
+          onClick={this.reset}
+          style={styles.resetButton}
+        >
+          Reset
+        </button>
+      </div>
+    );
+  }
+}
+
+const styles = {
+  incrementButton: {
+    backgroundColor: '#4CAF50', // Green
+    color: 'white',
+    padding: '10px 20px',
+    margin: '0 5px',
+    border: 'none',
+    borderRadius: '5px',
+    fontSize: '16px',
+    cursor: 'pointer'
+  },
+  decrementButton: {
+    backgroundColor: '#f44336', // Red
+    color: 'white',
+    padding: '10px 20px',
+    margin: '0 5px',
+    border: 'none',
+    borderRadius: '5px',
+    fontSize: '16px',
+    cursor: 'pointer'
+  },
+  resetButton: {
+    backgroundColor: '#2196F3', // Blue
+    color: 'white',
+    padding: '10px 20px',
+    margin: '0 5px',
+    border: 'none',
+    borderRadius: '5px',
+    fontSize: '16px',
+    cursor: 'pointer'
+  }
+};
+export default ColorfulCounter;;
